@@ -1,0 +1,12 @@
+<div class="StepsCenter">
+	<div ng-repeat="row in vm.totalSteps track by $index" ng-class="{StepsRight: $index<3 || $index==8 || $index==9 || $index==10, StepsDown: $index==3 || $index==7, StepsLeft: $index>3 && $index<7}">
+		<img src="{{vm.backb}}" ng-show="row.status==1" class="Background">
+		<img src="{{vm.backg}}" ng-show="row.status==0" class="Background">
+		<div class="Line">
+			<img src="{{vm.lineb}}" ng-show="$index!=vm.totalSteps.length-1 && row.status==1">
+			<img src="{{vm.lineg}}" ng-show="$index!=vm.totalSteps.length-1 && row.status==0">
+		</div>
+		<span ng-class="{StepsSpan4: row.steps.length<=4,StepsSpan8: row.steps.length>4 && row.steps.length<=8}">{{row.steps}}</span>
+		<span ng-class="{StepsNumB: row.status==1,StepsNumG: row.status==0,StepsDoubleNum: $index>=9}">{{$index+1}}</span>
+	</div>
+</div>

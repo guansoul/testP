@@ -1,0 +1,31 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="$ctrl.cancel()"><span aria-hidden="true">&times;</span><span
+        class="sr-only">Close</span></button>
+    <h4 style=" display: block;">一键交付</h4>
+    <hr style="border-top-color: #e5e5e5;margin-top: 0; margin-bottom: 10px;">
+    <div class="form-inline" style="color: ">
+        <span>环境：</span>
+        <div style="display: inline;">{{$ctrl.setting}}</div>
+        <span>应用名称：</span>
+        <div  style="display: inline;">{{$ctrl.servicename}}</div>
+        <span>域名：</span>
+        <div  style="display: inline;">{{$ctrl.servicedomain}}</div>
+    </div>
+</div>
+<div class="modal-body promptbox" id="modal-body">
+    <div class="form-group">
+        <span>选择分支：</span>
+        <input type="text" ng-model="$ctrl.param.branch" class="form-control">
+        <!--<select class="form-control" name="project" ng-options="branch for branch in $ctrl.branch"-->
+                <!--ng-model="$ctrl.publishbranch"></select>-->
+    </div>
+    <div class="form-group">
+        <span>选择版本：</span>
+        <input type="text" ng-model="$ctrl.param.tag" class="form-control">
+        <!--<select class="form-control" name="project" ng-options="option for option in $ctrl.options"-->
+                <!--ng-model="$ctrl.publishVersion"></select>-->
+    </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-primary" style="width: 20%" type="button" ng-click="$ctrl.ok($ctrl.param)">提交</button>
+</div>

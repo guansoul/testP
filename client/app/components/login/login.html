@@ -1,0 +1,33 @@
+<div class="content" id="loginBg">
+	<div class="login-warp">
+	    <div style="">
+	        <img src="{{vm.backff}}">
+	    </div>
+	    <form>
+		    <div class="boxinput">
+		        <div class="user-input">
+		            <input type="text" name="username" id="username"  ng-model="vm.username" ng-click='vm.aaa()' placeholder="请输入用户名/手机号" required />
+		            <span class="user">
+		            	<span class="checkUser place" ng-class="{'notchecked':vm.isCheckUser}"></span>
+		            </span>	            
+		        </div>
+		        <div class="password-input">
+		           <input type="password" name="password" id="password" ng-model="vm.password" ng-click='vm.bbb()' placeholder="请输入您的密码" required />
+	            	<span class="passwordClick">
+		            	<span class="checkPasssWord place" ng-class="{'notchecked':vm.isCheckPasssWord}"></span>
+		            </span>	            
+		        </div>
+		        <div style="position:relative;">
+			        <button ng-click = "vm.login()" type="submit">
+			            <img src="{{vm.go}}" style="position: absolute;right: -20%;top: -12%;">
+			        </button>
+			    </div>
+				<div class="rememberPassword">
+			    	<span class="checkbox" ng-class="{'notchecked':vm.isCheck}" ng-click="vm.toggleCheck()"></span>
+			      <span style="margin-left: 5px;">记住账户</span>
+			      <span style="margin-left: 15px;">忘记密码？</span>
+			    </div>
+		    </div>
+		</form>
+	</div>
+</div>

@@ -1,0 +1,34 @@
+{
+    "errCode": 0,
+    "errMessage": "success",
+    "data": {
+        "total":3,
+        "datas":[
+            {
+                "id": 1,
+                "name": "site",
+                "k8s": "http://10.213.44.154:10089",
+                "ci": "http://10.213.42.254:10088",
+                "mirror": "http://10.213.42.254:10500",
+                "remark":"xxxxxxx"
+            },
+            {
+                "id": 2,
+                "name": "uat",
+                "k8s": "http://10.213.45.154:10089",
+                "ci": "http://10.213.43.254:10088",
+                "mirror": "http://10.214.42.254:10500",
+                "remark":"xxxxxxx"
+            },
+            {
+                "id": 3,
+                "name": "生产",
+                "k8s": "http://10.213.46.154:10089",
+                "ci": "http://10.213.44.254:10088",
+                "mirror": "http://10.215.42.254:10500",
+                "remark":"xxxxxxx"
+
+            }        
+        ]
+    }
+}

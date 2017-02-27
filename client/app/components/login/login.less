@@ -1,0 +1,137 @@
+login .content {
+	background-image:url(images/tucheng.png);
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	height: 100%;
+    display: table;
+    width: 100%;
+}
+
+login .login-warp {
+	display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+login .boxinput {
+	width:382px;
+    height:118px;
+	background-color:white;
+	border-radius:4px;
+	display: inline-block;
+    margin-top: 58px;
+}
+
+login .boxinput>div {
+	height: 50%;
+    input{
+		border-radius: 4px;
+	    width: 364px;
+	    height: 46px;
+	    padding-left: 45px;
+	    border: 1px solid #ccc;
+	    box-shadow: inset 0 2px 8px #eee;
+	}
+}
+
+login #username {
+	margin: 8px;
+}
+
+login #password {
+	margin: 4px 8px 8px 8px;
+}
+
+login .boxinput>div>button{
+	width: 50px;
+    height: 50px;
+	border-radius: 50%;
+	position: absolute;
+    top: -86px;
+    left: 350px;
+	background-color: rgba(0,0,0,0.00000001);
+}
+
+login .user{
+	position: relative;
+    .checkUser{
+	    position: absolute;
+      float:left;
+      display: inline-block;
+      width:25px;
+      height:30px;
+      margin:0 6.5px 0 0;
+      background: url(images/user.png) no-repeat center center;
+      background-size: 24px 24px;
+    }
+    .checked {
+      background: url(images/user.png) no-repeat center center;
+      background-size: 24px 24px;
+    }
+    .notchecked {
+      background: url(images/user_click.png) no-repeat center center;
+      background-size: 24px 24px;
+    }
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0)
+{ 
+  .place { 
+    top: -45px;
+    left: -170px; 
+  } 
+}
+
+@-moz-document url-prefix()
+{
+  .place { 
+    top: -8px;
+    left: -360px;
+  } 
+}
+login .passwordClick{
+    position: relative;
+    .checkPasssWord{
+      display: inline-block;
+      	    position: absolute;
+      float:left;
+      width:25px;
+      height:30px;
+      margin:0 6.5px 0 0;
+      background: url(images/password.png) no-repeat center center;
+      background-size: 24px 24px;
+    }
+    .checked {
+      background: url(images/password.png) no-repeat center center;
+      background-size: 24px 24px;
+    }
+    .notchecked {
+      background: url(images/pass_click.png) no-repeat center center;
+      background-size: 24px 24px;
+    }
+}
+
+login .rememberPassword{
+    color: #fff;
+    text-align: left;
+    position: relative;
+    top: -50px;
+    .checkbox{
+      display: inline-block;
+      width:11px;
+      height:11px;
+      margin:0 6.5px 0 0;
+      background: url(images/checked.png) no-repeat center center;
+      background-size: 11px 11px;
+    }
+    .checked {
+      background: url(images/checked.png) no-repeat center center;
+      background-size: 11px 11px;
+    }
+    .notchecked {
+      background: url(images/uncheck.png) no-repeat center center;
+      background-size: 11px 11px;
+    }
+  }
+
+

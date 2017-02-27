@@ -1,0 +1,30 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="vm.cancel()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+    <h4 class="pull-left">创建项目</h4>
+</div>
+<form id="createProject_id" name="createProject" class="form-horizontal" ng-submit="vm.ok()" role="form">
+    <div class="modal-body popbody">
+        <div class="form-group">
+            <span class="popspan">项目名<span class="required-star">*</span></span>
+            <input type="text" name="projectName" class="required form-control popinput" ng-model="vm.projectName" ng-pattern="/^[^\u4e00-\u9fa5]{0,}$/" />
+            <div class="input-group error-info popinput pull-right" ng-show="createProject.projectName.$invalid">
+                <p class="discount-help-block">
+                    <span class="fa fa-info-circle required-star">项目名不能包含中文</span>
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <span class="popspan">别名</span>
+            <input type="text" class="form-control popinput" ng-model="vm.projectNameZh">
+        </div>
+        <div class="form-group">
+            <span class="popspan" style="vertical-align: top; ">描述</span>
+            <textarea name="" id="" cols="25" rows="4" ng-model="vm.description"></textarea>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn bp-btn-primary btn-sm" type="submit" ng-disabled="createProject.$invalid">提交
+        </button>
+        <input class="btn bp-btn-primary btn-sm" type="button" ng-click="vm.cancel()" value="取消">
+    </div>
+</form>

@@ -1,0 +1,77 @@
+<button class="btn bp-btn-primary buttoncolor" style="margin-top: 12px;float: right;" ng-click="vm.create()">
+    创建应用依赖
+</button>
+<div style="clear: both;margin-bottom: 12px;"></div>
+<table class="table table-condensed table-bordered table-striped table-hover"
+       ng-table="vm.tableParams"
+       cg-busy="{promise:vm.loadPromise, minDuration: 500, message:'数据加载ing...'}">
+    <thead>
+    <tr>
+        <th>编号</th>
+        <!--<th>应用依赖名</th>-->
+        <th>项目名称</th>
+        <th>关联应用数</th>
+        <th>依赖关系</th>
+        <!--<th>交付状态</th>-->
+        <!--<th>上次交付时间</th>-->
+        <!--<th>审核状态</th>-->
+        <th>备注</th>
+        <th>基础操作</th>
+        <th>交付到</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="row in $data">
+        <td title="{{row.id}}">{{row.id}}</td>
+        <td title="{{row.id}}">{{row.project}}</td>
+        <!--<td title="{{row.name}}">{{row.name}}</td>-->
+        <td title="{{row.services.join(',')}}">
+            <!-- <div ng-repeat="service in row.services">{{service}}</div> -->
+            5
+        </td>
+        <td ng-click="vm.clickIcon()"><img style="width:50px;" src="{{vm.relaIcon}}"/></td>
+
+        <!--<td ng-click="row.status !=='Ready' && vm.clickStatus(row)" title="{{row.status}}">-->
+            <!--<span ng-if="row.status !=='Ready'" style="cursor: pointer;padding-right: 100px;margin-right: -100px;"-->
+                  <!--class="glyphicon glyphicon-refresh" aria-hidden="true"></span>-->
+            <!--<span>{{row.status}}</span>-->
+        <!--</td>-->
+        <!--<td title="{{row.lastTime|date:'yyyy/MM/dd HH:mm:ss'}}">{{row.lastTime|date:'yyyy/MM/dd HH:mm:ss'}}</td>-->
+        <!--<td title="{{row.auditStatus}}">{{row.auditStatus}}</td>-->
+        <td title="{{row.note}}">{{row.note}}</td>
+        <td class="operate-btn-container">
+            <div class="btn-group" uib-dropdown is-open="status.isopen">
+                <button type="button" class="btn btn-primary Internalbutton" ng-click="vm.doSubAction(row, 'detail')">详情
+                </button>
+                <button id="single-button" type="button" class="btn btn-primary Internalbutton" uib-dropdown-toggle>
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                    <li ng-click="vm.doSubAction(row, 'edit')" role="menuitem"><a href="javascript:void(0);">编辑</a></li>
+                    <li ng-click="vm.doSubAction(row, 'history')" role="menuitem"><a href="javascript:void(0);">历史记录</a></li>
+                    <li class="divider"></li>
+                    <li ng-click="vm.doSubAction(row, 'delete')" role="menuitem"><a href="javascript:void(0);">删除</a></li>
+                </ul>
+            </div>
+        </td>
+        <td class="operate-btn-container">
+            <button class="btn btn-primary btn-xs Internalbutton" ng-click="vm.publishTo(row, 'sit')">
+                sit
+            </button>
+            <button class="btn btn-primary btn-xs Internalbutton" ng-click="vm.publishTo(row, 'UAT')">
+                UAT
+            </button>
+            <button class="btn btn-primary btn-xs Internalbutton" ng-click="vm.publishTo(row, 'PROD')">
+                PROD
+            </button>
+        </td>
+    </tr>
+    <tr ng-if="!($data && $data.length)">
+        <td colspan="6" class="text-center">
+            <i class="glyphicon glyphicon-remove"></i>您查询的条件错误或查询的结果不存在
+        </td>
+    </tr>
+    </tbody>
+</table>
+<div style="display: inline-block;margin: 28px 0;">共 {{vm.total}} 条记录</div>

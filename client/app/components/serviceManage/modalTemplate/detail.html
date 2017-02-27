@@ -1,0 +1,131 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="$ctrl.cancel()"><span aria-hidden="true">&times;</span><span
+        class="sr-only">Close</span></button>
+    <h4 style="float: left;">交付环境详情</h4>
+</div>
+<div class="modal-body promptbox" id="modal-body">
+    <div class="form-group">
+        <span>交付环境：</span>
+        <div class="bank">{{$ctrl.apply.envId.envNameZh}}</div>
+    </div>
+    <div class="form-group">
+        <span>交付状态：</span>        
+        <div class="bank">{{$ctrl.apply.deliveryStatus}}</div>
+    </div>
+    <div class="form-group">
+        <span>交付时间：</span>        
+        <div class="bank">{{$ctrl.apply.deliveryTime}}</div>
+    </div>
+    <div class="form-group">
+        <span>创建时间：</span>
+        <div class="bank">{{$ctrl.apply.envId.createtime|date:'yyyy/MM/dd HH:mm:ss'}}</div>
+    </div>
+    <div class="form-group">
+        <span>当前版本：</span>
+        <div class="bank">{{$ctrl.apply.version}}</div>
+    </div>
+
+    <div class="middle-line">应用信息</div>
+    <div class="form-group">
+        <span>应用名称：</span>        
+        <div class="bank">{{$ctrl.apply.serviceName}}</div>
+    </div>
+    <div class="form-group">
+        <span>应用别名：</span>        
+        <div class="bank">{{$ctrl.apply.serviceNameZh}}</div>
+    </div>
+    <div class="form-group">
+        <span>应用域名：</span>        
+        <div class="bank">{{$ctrl.apply.serviceDomain}}</div>
+    </div>
+    <div class="form-group">
+        <span>应用协议：</span>
+        <div class="bank">{{$ctrl.apply.serviceProtocol}}</div>
+    </div>
+    <div class="form-group">
+        <span>内部应用端口：</span>
+        <div class="bank">{{$ctrl.apply.innerPort}}</div>
+    </div>
+    <div class="form-group">
+        <span>外部应用端口：</span>
+        <div class="bank">{{$ctrl.apply.outerPort}}</div>
+    </div>
+    <div class="middle-line">配置信息</div>
+    <div class="form-group">
+        <span>CPU：</span>
+        <div class="bank">{{$ctrl.apply.cpu}}</div>
+    </div>
+    <div class="form-group">
+        <span>内存(G)：</span>
+        <div class="bank">{{$ctrl.apply.mem}}</div>
+    </div>
+    <div class="form-group">
+        <span>实例数：</span>
+        <div class="bank">{{$ctrl.apply.instanceNum}}</div>
+    </div>
+    <div class="middle-line">高级选项</div>
+    <div class="middle-helfLine">CD选项</div>
+        <div class="form-group" style="margin-top: 15px;">
+        <span>环境变量：</span>
+            <div style="margin: 15px 0 30px; padding-left: 161px;" class="form-inline" ng-repeat="item in $ctrl.apply.envVar">
+            <span>name：</span>
+            <div class="bank">{{item.name}}</div>
+            <span>value：</span>
+            <div class="bank">{{item.value}}</div>
+        </div>
+        </div>
+        <div class="form-group">
+            <span>启动参数：</span>
+            <div class="bank"  ng-repeat="arg in $ctrl.apply.args">
+                <div style="margin-left: 260px;">{{arg}}</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <span style="visibility: visible;">启动命令：</span>
+            <div class="bank"  ng-repeat="command in $ctrl.apply.command">
+                <div style="margin-left: 260px;">{{command}}</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <span>健康检查：</span>
+            <div class="bank">{{$ctrl.apply.healthcheck}}</div>
+        </div>
+        <div class="form-group">
+            <label class="checkbox-inline" style="margin-left: 15%;" ng-repeat="label in $ctrl.labels">
+                <input type="checkbox" ng-model="label.defaultFlag">
+                <span>{{label.labelNameZh}}</span>
+            </label>
+        </div>        
+        <div class="middle-helfLine">Pipeline Stage控制</div>
+        <div style="margin-left: 20%;">
+            <div class="form-group">
+                <label class="checkbox-inline"><input type="checkbox" ng-model="$ctrl.apply.stageCodescan" disabled>是否静态代码扫描</label>
+            </div>
+                <div class="form-group">
+                <label class="checkbox-inline"><input type="checkbox" ng-model="$ctrl.apply.stageBuild" disabled>是否编译</label>
+            </div>
+                <div class="form-group">
+                <label class="checkbox-inline"><input type="checkbox" ng-model="$ctrl.apply.stageUt" disabled>是否进行单元测试</label>
+            </div>
+                <div class="form-group">
+                <label class="checkbox-inline"><input type="checkbox" ng-model="$ctrl.apply.stageDeploy" disabled>是否打包镜像</label>
+            </div>
+                <div class="form-group">
+                <label class="checkbox-inline"><input type="checkbox" ng-model="$ctrl.apply.stageDeploy" disabled>是否部署</label>
+            </div>
+                <div class="form-group">
+                <label class="checkbox-inline"><input type="checkbox" ng-model="$ctrl.apply.stageAt" disabled>是否自动化测试</label>
+            </div>
+                <div class="form-group">
+                <label class="checkbox-inline"><input type="checkbox" ng-model="$ctrl.apply.stagePt" disabled>是否性能测试</label>
+            </div>
+        </div>
+        <div class="middle-helfLine">自动测试选项</div>
+        <div class="form-group" style="margin-top: 24px;">
+            <span>语言选择：</span>
+            <div class="bank">{{$ctrl.apply.language}}</div>
+        </div>
+</div>
+<div class="modal-footer">
+    <button type="button" style="width: 20%" class="btn bp-btn-primary" ng-click="$ctrl.cancel($ctrl.apply)">关闭</button>
+</div>

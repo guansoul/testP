@@ -1,0 +1,62 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="vm.cancel()"><span aria-hidden="true"  ng-if="!vm.dataLoading">&times;</span><span class="sr-only">Close</span></button>
+    <h4 class="pull-left">关联用户</h4>
+</div>
+<div class="modal-body Apopbody" id="modal-body">
+    <div class="form-group">
+        <span class="popspan">用户名：</span>
+        <input type="text" class="form-control popinput" placeholder="请输入用户名" ng-model="vm.user" ng-disabled="vm.dataLoading">
+        <button class="btn btn-primary" style="vertical-align: top;" ng-click="vm.add()" ng-disabled="!vm.user || vm.dataLoading">增加</button>
+        <img ng-src="{{vm.imgLoading}}" alt="imgLoading" ng-if="vm.dataLoading" style="width: 5%">
+    </div>
+    <div class="form-group">
+        <table class="table table-center table-hover table-bordered  myManage-table" ng-table="vm.tableParamsusers" cg-busy="{promise:vm.loadPromiseuser, minDuration: 500, message:'数据加载ing...'}">
+
+            <thead class="table-bordered noresult">
+                <tr>
+                    <th class="col-md-9 text-center">用户名</th>
+                 <!--    <th class="col-md-4">角色</th> -->
+                    <th class="col-md-3">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="row in $data track by $index">
+                    <td class="text-center">{{row.username}}</td>
+            <!--         <td>研发角色
+                    </td> -->
+                    <td>
+                        <button class="btn btn-danger" ng-click="vm.deletUser(row.username)" ng-disabled="vm.dataLoading" >删除</button>
+                    </td>
+                </tr>
+                <tr class="lx-list-sp-tr" ng-if="!$data || !$data.length">
+                    <td colspan="11" style="text-align: center">
+                        <div class="text-center" ng-show="vm.loading">
+                            <i class="glyphicon glyphicon-refresh">数据加载中...</i>
+                        </div>
+                        <div class="text-center" ng-if="!vm.loading && (!$data || !$data.length)">
+                            <i class="glyphicon glyphicon-remove"></i>您查询的条件错误或查询的结果不存在
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- <div class="" >
+        <bp-transfer
+        source-data='vm.dataSource'
+        titles='vm.transferOptions.titles'
+        placeholders='vm.transferOptions.placeholders'
+        operations='vm.transferOptions.operations'
+        show-left-search='vm.transferOptions.showLeftSearch'
+        show-right-search='vm.transferOptions.showRightSearch'
+        add-btn='vm.transferOptions.addBtn'
+        add-all-btn='vm.transferOptions.addAllBtn'
+        del-btn='vm.transferOptions.delBtn'
+        del-all-btn='vm.transferOptions.delAllBtn' style="margin: 0 auto;">
+    </bp-transfer> -->
+</div>
+</div>
+<div class="modal-footer">
+    <button class="btn bp-btn-primary"  ng-disabled="vm.dataLoading" ng-click="vm.cancel()">关闭
+    </button>
+</div>

@@ -1,0 +1,134 @@
+{
+    "errCode": 0,
+    "errMessage": "成功",
+
+
+    "data": {
+        "total": 33,
+        "datas": [
+            {
+                "id": 1,
+                "name": "risk_data",
+                "alias": "风控数据",
+                "note": "xxxxxxx",
+                "detail": [
+                    {
+                        "env": "sit",
+                        "domain": "risk.test.intra.ffan.com",
+                        "port": "10080",
+                        "count": 1,
+                        "config": "2CPU2GRAM50GDISK",
+                        "version": "V2.9",
+                        "lastTime": 1485223577256,
+                        "auditStatus": "提测通过，测试中",
+                        "status": "Ready"
+                    },
+                    {
+                        "env": "uat",
+                        "domain": "risk.uat.intra.ffan.com",
+                        "port": "10082",
+                        "count": 5,
+                        "config": "2CPU2GRAM50GDISK",
+                        "version": "V2.0",
+                        "lastTime": 1485223577256,
+                        "auditStatus": "已提测",
+                        "status": "编译"
+                    },
+                    {
+                        "env": "生产",
+                        "domain": "risk.prod.intra.ffan.com",
+                        "port": "10083",
+                        "count": 8,
+                        "config": "2CPU2GRAM50GDISK",
+                        "version": "V1.0",
+                        "lastTime": 1485223577256,
+                        "auditStatus": "申请发布",
+                        "status": "打包镜像"
+                    }
+                ]
+            },
+            {
+                "id": 2,
+                "name": "risk_data1",
+                "alias": "风控数据",
+                "note": "1323adsfas",
+                "detail": [
+                    {
+                        "env": "sit",
+                        "domain": "risk.test.intra.ffan.com",
+                        "port": "10080",
+                        "count": 1,
+                        "config": "2CPU2GRAM50GDISK",
+                        "version": "V2.9",
+                        "lastTime": 1485223577256,
+                        "auditStatus": "提测通过，测试中",
+                        "status": "Ready"
+                    },
+                    {
+                        "env": "uat",
+                        "domain": "risk.uat.intra.ffan.com",
+                        "port": "10082",
+                        "count": 5,
+                        "config": "2CPU2GRAM50GDISK",
+                        "version": "V2.0",
+                        "lastTime": 1485223577256,
+                        "auditStatus": "申请发布",
+                        "status": "打包镜像"
+                    },
+                    {
+                        "env": "生产",
+                        "domain": "risk.prod.intra.ffan.com",
+                        "port": "10083",
+                        "count": 8,
+                        "config": "2CPU2GRAM50GDISK",
+                        "version": "V1.0",
+                        "lastTime": 1485223577256,
+                        "auditStatus": "已提测",
+                        "status": "编译"
+                    }
+                ]
+            },
+            {
+                "id": 3,
+                "name": "risk_data2",
+                "alias": "风控数据",
+                "note": "1323adsfas",
+                "detail": [
+                    {
+                        "env": "sit",
+                        "domain": "risk.test.intra.ffan.com",
+                        "port": "10080",
+                        "count": 1,
+                        "config": "2CPU2GRAM50GDISK",
+                        "version": "V2.9",
+                        "lastTime": 1485223577256,
+                        "auditStatus": "提测通过，测试中",
+                        "status": "Ready"
+                    },
+                    {
+                        "env": "uat",
+                        "domain": "risk.uat.intra.ffan.com",
+                        "port": "10082",
+                        "count": 5,
+                        "config": "2CPU2GRAM50GDISK",
+                        "version": "V2.0",
+                        "lastTime": 1485223577256,
+                        "auditStatus": "已提测",
+                        "status": "编译"
+                    },
+                    {
+                        "env": "生产",
+                        "domain": "risk.prod.intra.ffan.com",
+                        "port": "10083",
+                        "count": 8,
+                        "config": "2CPU2GRAM50GDISK",
+                        "version": "V1.0",
+                        "lastTime": 1485223577256,
+                        "auditStatus": "申请发布",
+                        "status": "打包镜像"
+                    }
+                ]
+            }
+        ]
+    }
+}

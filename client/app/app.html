@@ -1,0 +1,13 @@
+<!-- Place all UI elements intended to be present across all routes in this file -->
+<div class="app" ng-class="vm.appKlass" ng-class="{'app-wide':vm.layoutNoMenu}">
+	<div ng-if="!vm.layoutNoMenu">
+	    <commonmenu class="layout-menu" ng-if="vm.menuTab == 'home'"></commonmenu>
+	    <cimenu class="layout-menu" ng-if="vm.menuTab == 'ciHistory'"></cimenu>
+	    <automenu class="layout-menu" ng-if="vm.menuTab == 'atmticTest'"></automenu>
+	    <cloudmenu class="layout-menu" ng-if="vm.menuTab == 'posCtrl'"></cloudmenu>
+	</div>
+    <div class='clearfix' ng-class="vm.layoutNoMenu?'layout-page-wide':'layout-page main-content'" style="height: 100%;">
+        <commonheader></commonheader>
+        <div class="main-wrapper" ui-view style="height: 100%;"></div>
+    </div>
+</div>

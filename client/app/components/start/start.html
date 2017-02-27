@@ -1,0 +1,43 @@
+<div class="page-title">
+    <div class="title">
+        <h1>{{ vm.name }}</h1>
+    </div>
+</div>
+<div class="conter-wrapper">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel bp-panel-primary">
+                <div class="panel-heading">
+                    项目数汇总
+                </div>
+                <div class="panel-body">
+                    <div class="echarts-container">
+                        <ng-echarts class="echarts" ec-config="vm.pieConfig_pro" ec-option="vm.pieOption_pro" cg-busy="{promise:vm.loadPromise, minDuration: 100, message:'数据加载ing...'}"></ng-echarts>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="panel bp-panel-primary">
+                <div class="panel-heading">
+                    环境应用数汇总
+                </div>
+                <div class="panel-body">
+                    <div class="echarts-container">
+                        <ng-echarts class="echarts" ec-config="vm.pieConfig_env" ec-option="vm.pieOption_env" cg-busy="{promise:vm.loadPromise, minDuration: 100, message:'数据加载ing...'}"></ng-echarts>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel bp-panel-primary ">
+        <div class="panel-heading">
+            2016年度月发布统计
+        </div>
+        <div class="panel-body" style="padding: 10px 0 0;">
+            <div class="col-md-10 echarts-containerbar" style="margin: 0;">
+                <ng-echarts class="echarts" ec-config="vm.barConfig" ec-option="vm.barOption" cg-busy="{promise:vm.loadPromise, minDuration: 500, message:'数据加载ing...'}"></ng-echarts>
+            </div>
+        </div>
+    </div>
+</div>

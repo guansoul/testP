@@ -1,0 +1,68 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="vm.cancel()"><span aria-hidden="true"  ng-if="!vm.dataLoading">&times;</span><span class="sr-only">Close</span></button>
+    <h4 class="pull-left">项目信息</h4>
+</div>
+<input type="text" ng-model="vm.params.id" class="hidden">
+<div class="modal-body popbody">
+    <!--  编辑-->
+    <div class="form-group">
+        <span class="popspan">项目名：</span>
+        <div class="popinput">{{vm.params.projectName}}</div>
+    </div>
+    <div class="form-group">
+        <span class="popspan">别名：</span>
+        <input type="text" ng-if="vm.params.allDisabled==''" class="form-control popinput" ng-model="vm.params.otherName" ng-disabled="vm.params.allDisabled">
+        <div ng-if="vm.params.allDisabled=='detail'" class="popinput" ng-bind="vm.params.otherName"></div>
+    </div>
+    <div class="form-group">
+        <span class="popspan">应用数：</span>
+        <div class="popinput" ng-bind="vm.params.serviceNum"></div>
+    </div>
+    <div class="form-group">
+        <span class="popspan">创建人：</span>
+        <div class="popinput" ng-bind="vm.params.createUserName "></div>
+    </div>
+    <div class="form-group">
+        <span class="popspan">创建时间：</span>
+        <div class="popinput" ng-bind="vm.params.createTime | date:'yyyy-MM-dd'"></div>
+    </div>
+    <div class="form-group" ng-if="vm.params.allDisabled==''">
+        <span class="popspan" style="vertical-align: top; ">描述：</span>
+        <textarea name="" id="" cols="25" rows="4" ng-model="vm.params.description"></textarea>
+    </div>
+    <div class="form-group row" ng-if="vm.params.allDisabled=='detail'">
+        <span class="popspan col-md-3" style="margin-left:10px; padding-right:5px">描述：</span>
+        <div class="popinput col-md-9" style="word-break:break-all;padding-left:1px !important;" ng-bind="vm.params.description" ng-disabled="true"></div>
+    </div>
+    <div class="form-group" ng-if="vm.params.allDisabled=='detail'">
+        <div class="middle-line">关联用户</div>
+        <table class="table table-center table-hover table-bordered  myManage-table" ng-table="vm.tableParamsusers" cg-busy="{promise:vm.loadPromiseuser, minDuration: 500, message:'数据加载ing...'}" style="width:60%;margin:auto">
+            <thead class="table-bordered noresult">
+                <tr>
+                    <th class="col-md-6 text-center">用户名</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="row in $data track by $index">
+                    <td class="text-center">{{row.username}}</td>
+                </tr>
+                <tr class="lx-list-sp-tr" ng-if="!$data || !$data.length">
+                    <td colspan="11" class="text-center">
+                        <div class="text-center" ng-show="vm.loading">
+                            <i class="glyphicon glyphicon-refresh">数据加载中...</i>
+                        </div>
+                        <div class="text-center" ng-if="!vm.loading && (!$data || !$data.length)">
+                            <i class="glyphicon glyphicon-remove"></i>您查询的条件错误或查询的结果不存在
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="modal-footer">
+    <button ng-if="vm.params.allDisabled==''" class="btn bp-btn-primary" ng-click="vm.ok()">保存
+    </button>
+    <button class="btn bp-btn-primary" ng-click="vm.cancel()">关闭
+    </button>
+</div>

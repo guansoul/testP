@@ -1,0 +1,15 @@
+<div class="panel">
+	<div class="page-title">
+  		<div class="title stepsTitle">
+        <span class="stepsTitleSpan"></span>
+    		<h1 class="stepsTitleH1">交付流程图</h1>
+  		</div>
+	</div>
+	<div class="panel-body" cg-busy="{promise:vm.loadPromise, minDuration: 500, message:'数据加载ing...'}">
+  		<nebula_steps total-steps="vm.stepsdata"></nebula_steps>
+  		<div class="description">
+  			<pre>{{vm.log}}</pre>
+  		</div>
+	</div>
+</div>
+

@@ -1,0 +1,122 @@
+<div class="modal-header">
+    <button type="button" class="close" ng-click="$ctrl.cancel()"><span aria-hidden="true">&times;</span><span
+        class="sr-only">Close</span></button>
+    <h4 style="float: left;">编辑交付环境</h4>
+</div>
+<div class="modal-body promptbox" id="modal-body">
+    <div class="form-group">
+        <span>交付环境：</span>
+        <select class="form-control" name="setting" ng-options="option.envNameZh for option in $ctrl.settingOptions"
+                ng-model="$ctrl.apply.envId"></select>
+    </div>
+    <div class="middle-line">应用信息</div>
+    <div class="form-group">
+        <span>应用域名：</span>
+        <input type="text" ng-model="$ctrl.apply.serviceDomain" class="form-control">
+    </div>
+    <div class="form-group">
+        <span>应用协议：</span>
+        <select class="form-control" name="setting" ng-options="$ctrl.agreementOptionsName[option] for option in $ctrl.agreementOptions"
+                ng-model="$ctrl.apply.serviceProtocol"></select>
+    </div>
+    <div class="form-group">
+        <span>内部应用端口：</span>
+        <input type="text" ng-model="$ctrl.apply.innerPort" class="form-control">
+    </div>
+    <div class="form-group">
+        <span>外部应用端口：</span>
+        <input type="text" ng-model="$ctrl.apply.outerPort" class="form-control">
+    </div>
+    <div class="middle-line">配置信息</div>
+    <div class="form-group">
+        <span>CPU：</span>
+        <input type="text" ng-model="$ctrl.apply.cpu" class="form-control">
+    </div>
+    <div class="form-group">
+        <span>内存(M)：</span>
+        <input type="text" ng-model="$ctrl.apply.mem" class="form-control">
+    </div>
+    <div class="form-group">
+        <span>磁盘(G)：</span>
+        <input type="text" ng-model="$ctrl.apply.disk" class="form-control">
+    </div>
+    <div class="form-group">
+        <span>实例数：</span>
+        <input type="text" ng-model="$ctrl.apply.instanceNum" class="form-control">
+    </div>
+    <a href="javascript:void(0);" ng-click="open = !open">高级选项</a>
+    <uib-accordion class="setting-more">
+        <div uib-accordion-group class="panel-default" is-open="open">
+            <div class="">
+                <uib-tabset active="active">
+                    <uib-tab index="0" heading="CD选项">
+                        <div class="form-inline" ng-repeat="item in $ctrl.apply.envVar" style="margin-left: 31%;margin-bottom: 3%; margin-top: 12px;">
+                            <div class="form-group">
+                                <span style="visibility: visible;">name：</span>
+                                <input type="text" ng-model="item.name" class="form-control" style="width: 66px;">
+                            </div>
+                            <div class="form-group">
+                                <span style="visibility: visible;">value：</span>
+                                <input type="text" ng-model="item.value" class="form-control" style="width: 66px;">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <span style="visibility: visible;">启动命令：</span>
+                            <input type="text" ng-repeat="command in $ctrl.apply.command" ng-model="command" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <span>健康检查：</span>
+                            <input type="text" ng-model="$ctrl.apply.healthcheck" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label class="checkbox-inline" style="margin-left: 15%;" ng-repeat="label in $ctrl.labels">
+                                <input type="checkbox" ng-model="label.defaultFlag">
+                                <span>{{label.labelNameZh}}</span>
+                            </label>
+                        </div>
+                    </uib-tab>
+                    <uib-tab index="1" heading="Pipeline Stage控制">
+                        <div style="margin-left: 20%;">
+                            <div class="form-group" style="margin-top: 12px;">
+                                <label class="checkbox-inline"><input type="checkbox" ng-model="$ctrl.apply.stageCodescan">是否静态代码扫描</label>
+                            </div>
+                            <div class="form-group">
+                                <label class="checkbox-inline"><input type="checkbox" ng-model="$ctrl.apply.stageBuild">是否编译</label>
+                            </div>
+                            <div class="form-group">
+                                <label class="checkbox-inline"><input type="checkbox" ng-model="$ctrl.apply.stageUt">是否进行单元测试</label>
+                            </div>
+                            <div class="form-group">
+                                <label class="checkbox-inline"><input type="checkbox" ng-model="$ctrl.apply.stageDocker">是否打包镜像</label>
+                            </div>
+                            <div class="form-group">
+                                <label class="checkbox-inline"><input type="checkbox" ng-model="$ctrl.apply.stageDeploy">是否部署</label>
+                            </div>
+                            <div class="form-group">
+                                <label class="checkbox-inline"><input type="checkbox" ng-model="$ctrl.apply.stageAt">是否自动化测试</label>
+                            </div>
+                            <div class="form-group">
+                                <label class="checkbox-inline"><input type="checkbox" ng-model="$ctrl.apply.stagePt">是否性能测试</label>
+                            </div>
+                        </div>
+                    </uib-tab>
+                    <uib-tab index="2" heading="自动测试选项">
+                        <div class="form-group" style="margin-top: 12px;">
+                            <span style="visibility: visible;">自测用例路径：</span>
+                            <input type="text" ng-model="$ctrl.apply.selfTestPath" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <span>语言选择：</span>
+                            <!--<input type="text" ng-model="$ctrl.apply.language" class="form-control">-->
+                            <select class="form-control" name="setting" ng-options="option for option in $ctrl.languageOptionsName"
+                                    ng-model="$ctrl.apply.language"></select>
+                        </div>
+                    </uib-tab>
+                </uib-tabset>
+            </div>
+        </div>
+    </uib-accordion>
+</div>
+<div class="modal-footer">
+    <button type="button" style="width: 20%" class="btn bp-btn-primary" ng-click="$ctrl.ok($ctrl.apply)">确定</button>
+</div>

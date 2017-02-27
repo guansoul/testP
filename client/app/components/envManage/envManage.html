@@ -1,0 +1,102 @@
+<div class="panel bp-panel-primary">
+    <div class="page-title">
+        <div class="title env-title">
+            <span class="env-titleSpan"></span>
+            <h1 class="env-titleH1">环境管理</h1>
+        </div>
+    </div>
+    <div class="panel-body envManage-body" style="padding-top: 0">
+        <div class="form-group" style="overflow: hidden">
+            <bp-button style="" ng-click="vm.addenvManage('add')"
+                    class="pull-right"
+                    type="info"><i class=""></i>&nbsp;创建环境
+            </bp-button>
+        </div>
+        <table class="table table-condensed table-bordered table-hover envManage-table"
+               ng-table="vm.tableParams"
+               cg-busy="{promise:vm.loadPromise, minDuration: 500, message:'数据加载ing...'}">
+            <thead>
+                <tr>
+                    <th>编号</th>
+                    <th>环境名</th>
+                    <th>k8s集群接口</th>
+                    <th>CI接口</th>
+                    <th>镜像仓库</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody class="env-trHover">
+                <tr ng-repeat="row in $data track by $index">
+                    <td class="col-md-2">{{row.id}}</td>
+                    <td>{{row.envName}}</td>
+                    <td>{{row.k8s}}</td>
+                    <td>{{row.ci}}</td>
+                    <td>{{row.mirror}}</td>
+                    <td class="col-md-3">
+                        <button class="btn env-primary btn-xs"
+                                ng-click="vm.apply(row, '')">
+                            <a href="javascript:void(0);"
+                               class="operate-btn"
+                               target="_self">编辑环境参数</a>
+                        </button>
+                        <button class="btn env-danger btn-xs"
+                                ng-click="vm.deleteItem(row.id)">
+                            <a class="operate-btn">删除</a>
+                        </button>
+                    </td>
+                </tr>
+                <tr ng-if="!($data && $data.length)">
+                    <td colspan="6" class="text-center">
+                        <i class="glyphicon glyphicon-remove"></i>您查询的条件错误或查询的结果不存在
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!--<div class="pull-right" style="margin: 8px">共 {{vm.total}} 条记录</div>-->
+    </div>
+</div>
+<script type="text/ng-template" id="addenvManage">
+    <div class="modal-header">
+        <button type="button" class="close outline_none" ng-click="$ctrl.cancel()"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" ng-if="$ctrl.titleEnv">创建环境</h4>
+        <h4 class="modal-title" ng-if="!$ctrl.titleEnv">编辑环境参数</h4>
+    </div>
+    <div class="modal-body addenvManage-body">
+        <p>
+        <div>
+            <div class="infor-body">
+                <label>环境名：</label>
+                <input class="form-control" type="text" ng-model="$ctrl.params.name">
+            </div>
+            <div class="infor-body">
+                <label>k8s集群接口：</label>
+                <input class="form-control" type="text" ng-model="$ctrl.params.k8s">
+            </div>
+            <div class="infor-body">
+                <label>CI接口：</label>
+                <input class="form-control" type="text" ng-model="$ctrl.params.ci">
+            </div>
+            <div class="infor-body">
+                <label>镜像仓库：</label>
+                <input class="form-control" type="text" ng-model="$ctrl.params.mirror">
+            </div>
+        </div>
+        </p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" style="width: 20%" class="btn bp-btn-primary" ng-click="$ctrl.ok()">提交</button>
+    </div>
+</script>
+<script type="text/ng-template" id="Delete">
+    <div class="modal-header">
+        <h4 class="modal-title">删除环境</h4>
+    </div>
+    <div class="modal-body addenvManage-body">
+        确定删除该环境吗？
+    </div>
+    <div class="modal-footer">
+        <button type="button" style="width: 20%" class="btn bp-btn-primary" ng-click="$ctrl.ok()">确定</button>
+        <button type="button" style="width: 20%" class="btn bp-btn-primary" ng-click="$ctrl.cancel()">取消</button>
+    </div>
+</script>
+

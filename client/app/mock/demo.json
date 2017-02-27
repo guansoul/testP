@@ -1,0 +1,10 @@
+{
+    "errCode": 0,
+    "errMessage": "success",
+    "data": [
+    { "id": 1, "name": "总览", "nodes": [{ "pid": 10,"entGroupName": "总览1","url":"","order":"1" }, { "pid": 10, "entGroupName": "总览2","url":"","order":"1"}]},
+    { "id": 2, "name": "应用&服务", "nodes": [{ "pid": 11,"entGroupName": "应用1","url":"","order":"1" }, { "pid": 11, "entGroupName": "服务器2","url":"","order":"1"}]},
+    { "id": 3, "name": "我的镜像", "nodes": [{ "pid": 12,"entGroupName": "镜像1","url":"","order":"1" }, { "pid": 12, "entGroupName": "镜像22","url":"","order":"1"}]}
+
+    ]
+}

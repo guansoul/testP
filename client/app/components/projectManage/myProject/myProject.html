@@ -1,0 +1,73 @@
+<div class="panel panel-primary myProject">
+    <div class="page-title myManage-title">
+        <div class="title my-title">
+            <span class="my-titleSpan"></span>
+            <h1 class="my-titleH1">我的项目</h1>
+        </div>
+    </div>
+    <div class="panel-body myManage-shadow">
+        <div class="form-group">
+            <div class="myManage-input">
+                <input type="text" class="form-control" placeholder="请输入项目名" ng-model="vm.projectName">
+            </div>
+            <bp-button type="info" ng-click="vm.reloadTable()" class="mySearch">搜索</bp-button>
+            <bp-button type="info" class="pull-right myFound" ng-click="vm.createProject()">创建项目</bp-button>
+        </div>
+        <div>
+            <table class="table table-center table-hover userborder table-bordered  myManage-table" ng-table="vm.tableParams" cg-busy="{promise:vm.loadPromise, minDuration: 500, message:'数据加载ing...'}">
+                <thead class="table-bordered noresult">
+                    <tr>
+                        <th>项目名</th>
+                        <th>别名</th>
+                        <!-- <th>资源占用分布</th> -->
+                        <th>创建人</th>
+                        <th>创建时间</th>
+                        <th>描述</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody class="noresult my-trHover">
+                    <tr ng-repeat="row in $data track by $index">
+                        <td> {{row.projectName}}</td>
+                        <td> {{row.projectNameZh}}</td>
+                        <!-- <td> 30%</td> -->
+                        <td>{{row.createUserName}}</td>
+                        <td> {{row.createtime | date:'yyyy-MM-dd'}} </td>
+                        <td> {{row.description | limitTo: 10}}{{row.description.length > 10 ? '...' : ''}}</td>
+                        <td class="operate-btn-container">
+                            <button class="btn my-success btn-primary btn-sm" ng-click="vm.myInfo(row,'detail')">详情</button>
+                            <div class="btn-group" uib-dropdown is-open="status.isopen">
+                                <button class="btn btn-primary btn-sm Internalbutton" ng-click="vm.relateUser(row)">
+                                    关联用户
+                                </button>
+                                <button id="single-button" type="button" class="btn btn-primary btn-sm unInternalbutton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" uib-dropdown-toggle>
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                                    <li ng-click="vm.myInfo(row,'')" role="menuitem"><a href="javascript:void(0);">编辑</a></li>
+                                    <li ng-click="vm.deleteProject(row.id)" role="menuitem"><a href="javascript:void(0);">删除</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr class="lx-list-sp-tr" ng-if="!$data || !$data.length">
+                        <td colspan="11" style="text-align: center">
+                            <div class="text-center" ng-show="vm.loading">
+                                <i class="glyphicon glyphicon-refresh">数据加载中...</i>
+                            </div>
+                            <div class="text-center" ng-if="!vm.loading && (!$data || !$data.length)">
+                                <i class="glyphicon glyphicon-remove"></i>您查询的条件错误或查询的结果不存在
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="recordCount">
+                <span>共
+                    <span class="count">{{vm.total}}</span> 条记录</span>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
